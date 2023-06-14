@@ -4,7 +4,7 @@ export default function About() {
   return (
     <div className="flex min-h-screen flex-col p-8">
       <Navbar />
-      <p>Esta es la página del About</p>
+      <p>Sobre los aguacates</p>
     </div>
   );
 }
