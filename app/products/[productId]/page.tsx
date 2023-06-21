@@ -1,23 +1,30 @@
 "use client";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-export default function ProductPage() {
-  const [product, setProduct] = useState<TProduct>();
-  const { query } = useRouter();
+export default function Product({ params }: { params: { productId: string } }) {
+  const [product, setProduct] = useState<TProduct | null>(null);
 
   useEffect(() => {
-    fetch(`/api/avo/${query.id}`)
+    fetch(`/api/avo/${params.productId}`)
       .then((res) => res.json())
-      .then(({ data }) => {
+      .then((data) => {
+        console.log(data);
+
         setProduct(data);
       });
-  }, [query.id]);
+  }, [params.productId]);
 
   return (
-    <section className="flex min-h-screen flex-col p-8">
-      <h1>Página del producto: {product?.name}</h1>
-      <h1>Precio del producto: {product?.price}</h1>
+    <section>
+      <div>
+        <h1>Página del producto:</h1>
+        {product?.name}
+      </div>
+
+      <div>
+        <h1>Precio del productoss:</h1>
+        {product?.price}
+      </div>
     </section>
   );
 }

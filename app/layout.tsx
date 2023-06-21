@@ -1,7 +1,7 @@
+import { poppins, roboto } from "@/font";
+import clsx from "clsx";
 import "./globals.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Navbar } from "@/components/Navbar/Navbar";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,8 +14,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body className={inter.className}>{children}</body>
+    <html lang="es" className={clsx(poppins.variable, roboto.variable)}>
+      <body className="font-poppins">
+        <section>
+          <div className="flex min-h-screen flex-col p-8">
+            <Navbar />
+            <main>{children}</main>
+            <div>Footer</div>
+          </div>
+        </section>
+      </body>
     </html>
   );
 }

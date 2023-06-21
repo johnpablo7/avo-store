@@ -1,5 +1,4 @@
 "use client";
-import { Navbar } from "@/components/Navbar/Navbar";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -15,11 +14,11 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col p-8">
-      <Navbar />
+    <main>
       <h1>Platzi and Next.js!</h1>
+      <div>-----------------------</div>
       {productList.map((product) => (
-        <Link key={product.id} href={`api/avo/${product.id}`}>
+        <Link key={product.id} href={`products/${product.id}`}>
           <div>{product.name}</div>
         </Link>
       ))}

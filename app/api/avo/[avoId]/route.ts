@@ -7,7 +7,7 @@ export async function GET(
 ) {
   const db = new Database();
 
-  const productId = await db.getById(params.avoId);
+  const product = await db.getById(params.avoId);
 
-  return NextResponse.json(productId);
+  return NextResponse.json(product);
 }
