@@ -1,18 +1,25 @@
-"use client";
+// "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
-export default function HomePage() {
-  const [productList, setProductList] = useState<TProduct[]>([]);
+// Server Side Rendering : getServerSideProps
+export default async function HomePage() {
+  const response = await fetch(
+    "https://avo-store-johnpablo7.vercel.app/api/avo"
+  );
+  const { data: productList }: TAPIAvoResponse = await response.json();
 
-  useEffect(() => {
-    fetch("/api/avo")
-      .then((res) => res.json())
-      .then(({ data }) => {
-        setProductList(data);
-      });
-  }, []);
+  // const [productList, setProductList] = useState<TProduct[]>([]);
+
+  //  Client Side Rendering : getStaticProps
+  // useEffect(() => {
+  //   fetch("/api/avo")
+  //     .then((res) => res.json())
+  //     .then(({ data }) => {
+  //       setProductList(data);
+  //     });
+  // }, []);
 
   return (
     <main>
