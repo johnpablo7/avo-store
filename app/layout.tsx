@@ -20,7 +20,7 @@ export default function RootLayout({
           <Navbar />
           <div className="border-t border-[#bbbaba] opacity-30" />
 
-          <div className="flex h-auto flex-col pt-4 px-20 bg-white">
+          <div className="flex h-auto flex-col pt-4 pb-12 px-20 bg-white">
             <main>{children}</main>
           </div>
 
