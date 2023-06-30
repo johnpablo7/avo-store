@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <div>
-      <p>Sobre los aguacates</p>
+      <p>My added products</p>
     </div>
   );
 }

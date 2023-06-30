@@ -18,6 +18,10 @@ class Database {
     await randomDelay();
     return entry;
   }
+
+  // async getImageUrl(id: string): Promise<TProduct | null> {
+
+  // }
 }
 
 // Let's also add a delay to make it a bit closer to reality

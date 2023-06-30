@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -15,13 +16,36 @@ export default function HomePage() {
 
   return (
     <main>
-      <h1>Platzi and Next.js!</h1>
-      <div>-----------------------</div>
-      {productList.map((product) => (
-        <Link key={product.id} href={`products/${product.id}`}>
-          <div>{product.name}</div>
-        </Link>
-      ))}
+      <div className="flex items-center justify-center mb-8">
+        <h1 className="text-4xl font-bold">Platzi</h1>
+        <Image src="/images/logo.png" alt="logo" width={82} height={82} />
+        <h1 className="text-4xl font-bold">Avo</h1>
+      </div>
+
+      <div className="grid grid-cols-6 gap-5">
+        {productList.map((product) => (
+          <div
+            key={product.id}
+            className="bg-slate-100 border border-[#bbbaba] rounded-md flex flex-col h-auto"
+          >
+            <Link href={`products/${product.id}`} rel="preload">
+              <Image
+                src={product.image}
+                alt="avocado"
+                width={340}
+                height={340}
+                priority
+                className="rounded-md object-cover"
+              />
+              <div className="border-t border-[#bbbaba] opacity-30" />
+              <div className="p-4">
+                <h2 className="text-lg font-bold">{product.name}</h2>
+                <p className="text-gray-500">{product.price}</p>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
     </main>
   );
 }

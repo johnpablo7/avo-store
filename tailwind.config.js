@@ -7,11 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        poppins: ["var(--font-poppins)"],
+        roboto: ["var(--font-roboto)"],
+      },
       colors: {},
-    },
-    fontFamily: {
-      roboto: ["var(--font-roboto)"],
-      poppins: ["var(--font-poppins)"],
     },
   },
   plugins: [],

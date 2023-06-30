@@ -1,7 +1,7 @@
-import { poppins, roboto } from "@/font";
-import clsx from "clsx";
 import "./globals.css";
+import { poppins, roboto } from "@/font";
 import { Navbar } from "@/components/Navbar/Navbar";
+import { Footer } from "@/components/Footer/Footer";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,14 +14,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={clsx(poppins.variable, roboto.variable)}>
-      <body className="font-poppins">
+    <html lang="en" className={`${poppins.variable} ${roboto.variable}`}>
+      <body className="font-poppins bg-slate-100">
         <section>
-          <div className="flex min-h-screen flex-col p-8">
-            <Navbar />
+          <Navbar />
+          <div className="border-t border-[#bbbaba] opacity-30" />
+
+          <div className="flex h-auto flex-col pt-4 px-20 bg-white">
             <main>{children}</main>
-            <div>Footer</div>
           </div>
+
+          <div className="border-t border-[#bbbaba] opacity-30" />
+          <Footer />
         </section>
       </body>
     </html>
