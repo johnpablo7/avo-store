@@ -1,24 +1,33 @@
-"use client";
+// "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { MdOutlineShoppingCart, MdCheck } from "react-icons/md";
+// import { useEffect, useState } from "react";
 
-export default function Product({ params }: { params: { productId: string } }) {
-  const [product, setProduct] = useState<TProduct | null>(null);
+// Pagina dinamica
+export default async function Product({
+  params,
+}: {
+  params: { productId: string };
+}) {
+  const response = await fetch(
+    `https://avo-store-johnpablo7.vercel.app/api/avo/${params.productId}`,
+    {
+      next: { revalidate: 60 },
+    }
+  );
+  const product: TProduct = await response.json();
 
-  useEffect(() => {
-    fetch(`/api/avo/${params.productId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
+  // Client Side Rendering
+  // const [product, setProduct] = useState<TProduct | null>(null);
+  // useEffect(() => {
+  //   fetch(`/api/avo/${params.productId}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       // console.log(data);
 
-        setProduct(data);
-      });
-  }, [params.productId]);
-
-  if (!product) {
-    return product;
-  }
+  //       setProduct(data);
+  //     });
+  // }, [params.productId]);
 
   return (
     <section>

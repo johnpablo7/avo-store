@@ -3,16 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 // import { useEffect, useState } from "react";
 
-// Server Side Rendering : getServerSideProps
+// Pagina estatica
 export default async function HomePage() {
   const response = await fetch(
-    "https://avo-store-johnpablo7.vercel.app/api/avo"
+    "https://avo-store-johnpablo7.vercel.app/api/avo",
+    { next: { revalidate: 60 } }
   );
   const { data: productList }: TAPIAvoResponse = await response.json();
 
+  // Client Side Rendering
   // const [productList, setProductList] = useState<TProduct[]>([]);
-
-  //  Client Side Rendering : getStaticProps
   // useEffect(() => {
   //   fetch("/api/avo")
   //     .then((res) => res.json())
